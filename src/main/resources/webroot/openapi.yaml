@@ -1,0 +1,60 @@
+openapi: 3.0.3
+info:
+  version: ${project.version}
+  title: Validation service for RDF based on SHACL
+  x-logo:
+    url: "images/${branding.logo}"
+paths:
+  /report:
+    post:
+      description: Create and returns a shacl report for a given dcat-ap graph
+      summary: SHACL based validation and report creation
+      operationId: validationReport
+      requestBody:
+        description: The content to validate
+        required: true
+        content:
+          application/rdf+xml:
+            schema:
+              type: string
+          application/n-triples:
+            schema:
+              type: string
+          application/trig:
+            schema:
+              type: string
+          text/turtle:
+            schema:
+              type: string
+          text/n3:
+            schema:
+              type: string
+      responses:
+        '200':
+          description: Successfully validated the input and created a report.
+          content:
+            text/turtle:
+              schema:
+                type: string
+            application/rdf+xml:
+              schema:
+                type: string
+            application/n-triples:
+              schema:
+                type: string
+            application/trig:
+              schema:
+                type: string
+            text/n3:
+              schema:
+                type: string
+        '400':
+          description: Input validation error
+          content:
+            application/json:
+              schema:
+                description: Error indicator
+                type: object
+                properties:
+                  reason:
+                    type: string

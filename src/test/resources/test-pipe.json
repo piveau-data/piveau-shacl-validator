@@ -1,0 +1,58 @@
+{
+  "header": {
+    "id": "08046bf8-f662-4453-91cf-ce58f06e548e",
+    "name": "test-pipe",
+    "title": "Test Pipe",
+    "context": "JUnit5 Tests",
+    "transport": "payload",
+    "version": "1.0"
+  },
+  "body": {
+    "segments": [
+      {
+        "header": {
+          "name": "validating-shacl",
+          "segmentNumber": 1,
+          "title": "Validating SHACL",
+          "processed": false
+        },
+        "body": {
+          "endpoint": {
+            "address": "http://localhost:8080/pipe"
+          },
+          "config": {
+          },
+          "payload": {
+            "header": {
+              "seqNumber": 1,
+              "dataType": "text"
+            },
+            "body": {
+              "dataInfo": {
+                "identifier": "sampleDataset",
+                "catalogue": "any-kind"
+              },
+              "dataMimeType": "application/trig",
+              "data": "@prefix dcat: <http://www.w3.org/ns/dcat#> .\n@prefix dc: <http://purl.org/dc/terms/> .\n@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .\n@prefix foaf: <http://xmlns.com/foaf/0.1/> .\n@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .\n\n<https://europeandataportal.eu/set/data/sampleDataset>\n  a dcat:Dataset ;\n  dc:identifier \"sampleDataset\" ;\n  dc:title \"Sample dataset\" ;\n  dc:description \"Sample dataset description\" ;\n  dcat:distribution <https://europeandataportal.eu/set/distribution/sampleDistribution> ;\n  dc:issued \"2017-10-19T00:00:00\"^^xsd:dateTime ;\n  dc:modified \"2019-04-17T08:00:40.660\"^^xsd:dateTime ;\n  dc:publisher <http://publications.europa.eu/resource/authority/corporate-body/EURCOM> ;\n  dc:accessRights \"PUBLIC\" ;\n  dcat:keyword \"logistics\", \"weather\" .\n\n<https://europeandataportal.eu/set/distribution/sampleDistribution>\n  a dcat:Distribution ;\n  dc:identifier \"sampleDistribution\" ;\n  dc:title \"Sample distribution title\" ;\n  dc:description \"Sample distribution description\" ;\n  dcat:accessURL <http://example.com> ;\n  dcat:downloadURL <http://example.com/download> ;\n  dc:issued \"2018-12-10T23:02:42.520\"^^xsd:dateTime ;\n  dc:modified \"2017-10-19T00:00:00\"^^xsd:dateTime ;\n  dc:rights \"Creative Commons CCZero\" ;\n  dc:format \"json\" ;\n  dc:license <http://www.opendefinition.org/licenses/cc-zero> .\n\n<http://publications.europa.eu/resource/authority/corporate-body/EURCOM>\n  a foaf:Agent ;\n  rdfs:label \"Organisation Label\" ;\n  foaf:homepage <http://www.lorem.ipsum/org> ;\n  foaf:name \"Organisation Name\" .\n"
+            }
+          }
+        }
+      },
+      {
+        "header": {
+          "name": "test-sink",
+          "segmentNumber": 2,
+          "title": "Sink for test",
+          "processed": false
+        },
+        "body": {
+          "endpoint": {
+            "address": "http://localhost:8098/pipe"
+          },
+          "config": {
+          }
+        }
+      }
+    ]
+  }
+}
